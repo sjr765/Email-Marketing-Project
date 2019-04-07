@@ -23,7 +23,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/api', require('./routes/api'));
+require('./routes/authRoutes')(app);
+require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up productio assets
